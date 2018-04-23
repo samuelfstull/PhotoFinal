@@ -1,8 +1,56 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Label text="Tu-Tu Tango Photo Tagger">
+         <font>
+            <Font name="Brush Script MT Italic" size="30.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#f50707" />
+                  <Stop color="#4a3434" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill></Label>
+      <AnchorPane prefHeight="112.0" prefWidth="600.0">
+         <children>
+            <Button layoutX="161.0" layoutY="44.0" mnemonicParsing="false" onAction="#photoViewerPress" text="Photo Viewer">
+               <font>
+                  <Font name="Brush Script MT Italic" size="20.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#f50707" />
+                        <Stop color="#4a3434" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Button>
+            <Button layoutX="396.0" layoutY="44.0" mnemonicParsing="false" onAction="#PhotoAdderPress" text="Photo Adder">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#f50707" />
+                        <Stop color="#4a3434" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font name="Brush Script MT Italic" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

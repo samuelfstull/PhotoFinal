@@ -1,32 +1,10 @@
 package sample;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.stage.FileChooser;
 
-public class Main extends Application {
-
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Tu-Tu Tango Studios");
-        primaryStage.setScene(new Scene(root, 700, 275));
-        primaryStage.show();
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-}
-
-
-
-
-
-/*
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -45,43 +23,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
-/**
- * @web http://java-buddy.blogspot.com/
 
-public class Main extends Application {
-
-}
-
-
+public class EditorController {
     ImageView myImageView;
+    public void btnLoadEventListener(ActionEvent actionEvent) {
 
-    @Override
-    public void start(Stage primaryStage) {
-
-        Button btnLoad = new Button("Load");
-        btnLoad.setOnAction(btnLoadEventListener);
-
-        myImageView = new ImageView();
-
-        VBox rootBox = new VBox();
-        rootBox.getChildren().addAll(btnLoad, myImageView);
-
-        Scene scene = new Scene(rootBox, 1000, 1000);
-
-        primaryStage.setTitle("java-buddy.blogspot.com");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    EventHandler<ActionEvent> btnLoadEventListener
-            = new EventHandler<ActionEvent>(){
-
-        @Override
-        public void handle(ActionEvent t) {
             FileChooser fileChooser = new FileChooser();
 
             //Set extension filter
@@ -96,11 +42,16 @@ public class Main extends Application {
                 BufferedImage bufferedImage = ImageIO.read(file);
                 Image image = SwingFXUtils.toFXImage(bufferedImage, null);
                 System.out.println("test");
-                myImageView.setImage(image);
+                addPhotoToFolder();
+                //myImageView.setImage(image);
             } catch (IOException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
-    };
-*/
+
+
+        private void addPhotoToFolder(){
+
+        }
+}
