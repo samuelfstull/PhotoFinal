@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
+
 public class Main extends Application {
 
     @Override
@@ -16,7 +18,9 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    //HashMap<PhotoInstance, Photo> hmap = new HashMap<PhotoInstance, Photo>();
 
+    HashMap<Object, Object> hmap = new HashMap<Object, Object>();
 
 
     public static void main(String[] args) {

@@ -10,6 +10,7 @@ import javafx.stage.FileChooser;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
@@ -27,43 +28,42 @@ public class EditorController {
     private int counter = 0;
    private TextArea[] textAreas = new TextArea[10];
 
-    public void btnLoadEventListener(ActionEvent actionEvent) {
+    public void choosePhoto(ActionEvent actionEvent) {
 
-            FileChooser fileChooser = new FileChooser();
+        FileChooser fileChooser = new FileChooser();
 
 
-            //Set extension filter
-            FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
-            FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
-            fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+        //Set extension filter
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        fileChooser.getExtensionFilters().addAll(extFilterPNG, extFilterJPG);
 
-            //Show open file dialog
-            File file = fileChooser.showOpenDialog(null);
+        //Show open file dialog
+        File file = fileChooser.showOpenDialog(null);
+
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file);
+
+            System.out.println(bufferedImage.getHeight());
+            System.out.println(bufferedImage.getWidth());
+
+            BufferedImage bImage = scale(bufferedImage, 300, 225);
+
+            RenderedImage rImage = (RenderedImage) bImage;
 
             try {
-                BufferedImage bufferedImage = ImageIO.read(file);
-                Image originalImage = SwingFXUtils.toFXImage(bufferedImage, null);  //FXImage
-                System.out.println("original image height = " + originalImage.getHeight());
-                System.out.println("original image width = " + originalImage.getWidth());
+                System.out.println("got here");
+                File outputfile = new File("C:\\Users\\Adam\\Pictures\\saved.png");
 
-                try {
-                    // retrieve image
-                    //BufferedImage bi = getMyImage();
-                    File outputfile = new File("saved.png");
-                    ImageIO.write(bufferedImage, "png", outputfile);
-                } catch (IOException e) {
-                    //fill?
-                }
-
-
-                System.out.println("test");
-                addPhotoToFolder();
-                //myImageView.setImage(image);
-            } catch (IOException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                ImageIO.write(rImage, "png", outputfile);
+            } catch(IOException e) {
+                System.out.println("Write error!");
             }
-
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+    }
 
 
         private void addPhotoToFolder(){
@@ -91,11 +91,23 @@ public class EditorController {
         System.out.println("test1");
     }
 
-    public Image scale(Image source, int targetWidth, int targetHeight, boolean preserveRatio) {
-            ImageView imageView = new ImageView(source);
-            imageView.setPreserveRatio(preserveRatio);
-            imageView.setFitWidth(targetWidth);
-            imageView.setFitHeight(targetHeight);
-            return imageView.snapshot(null, null);
+    public static BufferedImage scale(BufferedImage src, int w, int h)
+    {
+        BufferedImage img =
+                new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+        int x, y;
+        int ww = src.getWidth();
+        int hh = src.getHeight();
+        int[] ys = new int[h];
+        for (y = 0; y < h; y++)
+            ys[y] = y * hh / h;
+        for (x = 0; x < w; x++) {
+            int newX = x * ww / w;
+            for (y = 0; y < h; y++) {
+                int col = src.getRGB(newX, ys[y]);
+                img.setRGB(x, y, col);
+            }
+        }
+        return img;
     }
 }
