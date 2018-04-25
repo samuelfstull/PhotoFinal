@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Controller {
+public class MainMenuController {
     public void photoViewerPress(ActionEvent actionEvent) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("photoViewer.fxml"));
         Parent root = null;
@@ -28,7 +28,7 @@ public class Controller {
     }
 
     public void PhotoAdderPress(ActionEvent actionEvent) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PhotoEditor.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("photoEditor.fxml"));
         Parent root = null;
         try {
             root = fxmlLoader.load();

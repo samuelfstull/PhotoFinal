@@ -8,7 +8,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
    <children>
       <Label text="Tu-Tu Tango Photo Tagger">
          <font>
@@ -24,7 +24,7 @@
          </textFill></Label>
       <AnchorPane prefHeight="112.0" prefWidth="600.0">
          <children>
-            <Button layoutX="161.0" layoutY="44.0" mnemonicParsing="false" onAction="#photoViewerPress" text="Photo Viewer">
+            <Button layoutX="161.0" layoutY="44.0" mnemonicParsing="false" onAction="#photoViewerPress" text="Photo Adder">
                <font>
                   <Font name="Brush Script MT Italic" size="20.0" />
                </font>
@@ -37,7 +37,7 @@
                   </LinearGradient>
                </textFill>
             </Button>
-            <Button layoutX="396.0" layoutY="44.0" mnemonicParsing="false" onAction="#PhotoAdderPress" text="Photo Adder">
+            <Button layoutX="396.0" layoutY="44.0" mnemonicParsing="false" onAction="#PhotoAdderPress" text="Photo Viewer">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
