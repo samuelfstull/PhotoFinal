@@ -12,22 +12,6 @@ import java.io.IOException;
 
 public class MainMenuController {
     public void photoViewerPress(ActionEvent actionEvent) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("photoViewer.fxml"));
-        Parent root = null;
-        try {
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setOpacity(1);
-        stage.setTitle("My New Stage Title");
-        stage.setScene(new Scene(root, 450, 450));
-        stage.showAndWait();
-    }
-
-    public void PhotoAdderPress(ActionEvent actionEvent) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("photoEditor.fxml"));
         Parent root = null;
         try {
@@ -38,7 +22,23 @@ public class MainMenuController {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setOpacity(1);
-        stage.setTitle("My New Stage Title");
+        stage.setTitle("Add your Photos!");
+        stage.setScene(new Scene(root, 450, 450));
+        stage.showAndWait();
+    }
+
+    public void PhotoAdderPress(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("photoViewer.fxml"));
+        Parent root = null;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setOpacity(1);
+        stage.setTitle("View your Photos!");
         stage.setScene(new Scene(root, 450, 450));
         stage.showAndWait();
     }
