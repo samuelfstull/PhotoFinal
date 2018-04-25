@@ -17,6 +17,8 @@ public class Main extends Application {
     }
 
 
+
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -66,7 +68,7 @@ public class Main extends Application {
         VBox rootBox = new VBox();
         rootBox.getChildren().addAll(btnLoad, myImageView);
 
-        Scene scene = new Scene(rootBox, 1000, 1000);
+        Scene scene = new Scene(rootBox, 300, 300);
 
         primaryStage.setTitle("java-buddy.blogspot.com");
         primaryStage.setScene(scene);

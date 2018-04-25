@@ -10,6 +10,8 @@ import javafx.stage.FileChooser;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
@@ -22,7 +24,7 @@ import javax.imageio.ImageIO;
 
 
 public class ViewerController {
-    ImageView myImageView;
+    ImageView myImageView = new ImageView();
     @FXML AnchorPane editorPane;
     private int counter = 0;
    private TextArea[] textAreas = new TextArea[10];
@@ -33,19 +35,31 @@ public class ViewerController {
 
 
             //Set extension filter
-            FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
             FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
-            fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+            FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+            fileChooser.getExtensionFilters().addAll(extFilterPNG, extFilterJPG);
 
             //Show open file dialog
             File file = fileChooser.showOpenDialog(null);
 
             try {
                 BufferedImage bufferedImage = ImageIO.read(file);
-                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-                System.out.println("test");
-                addPhotoToFolder();
-                //myImageView.setImage(image);
+
+                System.out.println(bufferedImage.getHeight());
+                System.out.println(bufferedImage.getWidth());
+
+                BufferedImage bImage = scale(bufferedImage, 300, 225);
+
+                RenderedImage rImage = (RenderedImage) bImage;
+
+                try {
+                    System.out.println("got here");
+                    File outputfile = new File("C:\\Users\\Adam\\Pictures\\saved.png");
+
+                    ImageIO.write(rImage, "png", outputfile);
+                } catch(IOException e) {
+                    System.out.println("Write error!");
+                }
             } catch (IOException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -77,4 +91,35 @@ public class ViewerController {
         addPhotos();
         System.out.println("test1");
     }
+
+    public static BufferedImage scale(BufferedImage src, int w, int h)
+    {
+        BufferedImage img =
+                new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+        int x, y;
+        int ww = src.getWidth();
+        int hh = src.getHeight();
+        int[] ys = new int[h];
+        for (y = 0; y < h; y++)
+            ys[y] = y * hh / h;
+        for (x = 0; x < w; x++) {
+            int newX = x * ww / w;
+            for (y = 0; y < h; y++) {
+                int col = src.getRGB(newX, ys[y]);
+                img.setRGB(x, y, col);
+            }
+        }
+        return img;
+    }
+
+    /*
+    public static BufferedImage imageToBufferedImage(Image im) {
+        BufferedImage bi = new BufferedImage
+                (im.getWidth(null),im.getHeight(null),BufferedImage.TYPE_INT_RGB);
+        Graphics bg = bi.getGraphics();
+        bg.drawImage(im, 0, 0, null);
+        bg.dispose();
+        return bi;
+    }
+    */
 }
