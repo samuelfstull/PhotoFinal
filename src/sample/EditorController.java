@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,6 +41,10 @@ public class EditorController {
 
         //Show open file dialog
         File file = fileChooser.showOpenDialog(null);
+        String name = file.getName(); //gets the name of the image file, e.g. jacksonWashington1.png
+        String location = file.getAbsolutePath();
+        System.out.println("absolute path for this pic is: " + location);
+        System.out.println(name);
 
         try {
             BufferedImage bufferedImage = ImageIO.read(file);
@@ -47,13 +52,17 @@ public class EditorController {
             System.out.println(bufferedImage.getHeight());
             System.out.println(bufferedImage.getWidth());
 
-            BufferedImage bImage = scale(bufferedImage, 300, 225);
+            //BufferedImage bImage = scale(bufferedImage, 300, 225);
+            BufferedImage bImage = scale(bufferedImage, 100, 75);
 
             RenderedImage rImage = (RenderedImage) bImage;
+            Image image = SwingFXUtils.toFXImage(bImage, null);
+
+            makePhotoInstance(name, QuestionsController.tags, image);
 
             try {
                 System.out.println("got here");
-                File outputfile = new File("C:\\Users\\Adam\\Pictures\\saved.png");
+                File outputfile = new File("C:\\Users\\Adam\\Pictures\\" + name);
 
                 ImageIO.write(rImage, "png", outputfile);
             } catch(IOException e) {
@@ -62,6 +71,8 @@ public class EditorController {
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        //makePhotoInstance(name, QuestionsController.tags, rImage);
 
     }
 
@@ -109,5 +120,17 @@ public class EditorController {
             }
         }
         return img;
+    }
+
+    private void makePhotoInstance(String name, ArrayList<String> tags, Image image) {
+            PhotoInstance newPI = new PhotoInstance(name, tags, image);
+            Main.allPhotos.add(newPI);
+
+            //for debugging
+            for(int i=0; i<Main.allPhotos.size(); i++) {
+                System.out.println("printing PhotoInstance parameters: " + Main.allPhotos.get(i));
+            }
+
+            System.out.println(Main.allPhotos.size());
     }
 }

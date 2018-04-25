@@ -8,12 +8,12 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.QuestionsController">
    <children>
       <Label layoutX="286.0" layoutY="22.0" text="Welcome!" />
-      <TextField layoutX="226.0" layoutY="185.0" />
-      <TextField layoutX="227.0" layoutY="240.0" />
-      <Button layoutX="247.0" layoutY="339.0" mnemonicParsing="false" onAction="#photoViewerPress" text="Let's Get Started!" />
+      <TextField fx:id="whereText" layoutX="226.0" layoutY="185.0" onAction="#getWhereText" />
+      <TextField fx:id="whenText" layoutX="227.0" layoutY="240.0" onAction="#getWhenText" />
+      <Button fx:id="getStarted" layoutX="247.0" layoutY="339.0" mnemonicParsing="false" onAction="#photoViewerPress" text="Let's Get Started!" />
       <Label layoutX="214.0" layoutY="153.0" text="Where did you take these Photos" />
       <Label layoutX="211.0" layoutY="217.0" text="When did you take these photos?" />
-      <TextField layoutX="228.0" layoutY="303.0" />
+      <TextField fx:id="otherText" layoutX="228.0" layoutY="303.0" onAction="#getOtherText" />
       <Label layoutX="186.0" layoutY="279.0" text="Any other information about these photos?" />
    </children>
 </AnchorPane>

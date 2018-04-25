@@ -30,7 +30,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="107.0" prefWidth="600.0" spacing="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#photoViewerPress" text="Photo Adder">
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#photoAdderPress" text="Photo Adder">
                            <font>
                               <Font name="Brush Script MT Italic" size="20.0" />
                            </font>
@@ -43,7 +43,7 @@
                               </LinearGradient>
                            </textFill>
                         </Button>
-                        <Button alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#PhotoAdderPress" text="Photo Viewer">
+                        <Button alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#photoViewerPress" text="Photo Viewer">
                            <textFill>
                               <LinearGradient endX="1.0" endY="1.0">
                                  <stops>

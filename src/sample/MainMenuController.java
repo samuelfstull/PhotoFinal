@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class MainMenuController {
 
-    public void photoViewerPress(ActionEvent actionEvent) {
+    public void photoAdderPress(ActionEvent actionEvent) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questions.fxml"));
         Parent root = null;
         try {
@@ -29,7 +29,7 @@ public class MainMenuController {
     }
 
 
-    public void PhotoAdderPress(ActionEvent actionEvent) {
+    public void photoViewerPress(ActionEvent actionEvent) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("photoViewer.fxml"));
         Parent root = null;
         try {

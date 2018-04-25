@@ -4,8 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.awt.image.RenderedImage;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main extends Application {
@@ -20,11 +23,17 @@ public class Main extends Application {
 
     //HashMap<PhotoInstance, Photo> hmap = new HashMap<PhotoInstance, Photo>();
 
-    HashMap<Object, Object> hmap = new HashMap<Object, Object>();
+    //HashMap<Object, Object> hmap = new HashMap<Object, Object>();
+
+    public static ArrayList<PhotoInstance> allPhotos = new ArrayList<>();
 
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public Image getImage(PhotoInstance pi) {
+        return pi.getImage();
     }
 }
 
