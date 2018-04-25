@@ -27,10 +27,7 @@ import javax.imageio.ImageIO;
 
 
 public class ViewerController {
-    ImageView myImageView = new ImageView();
     @FXML AnchorPane editorPane;
-    private int counter = 1;
-   //private TextArea[] textAreas = new TextArea[10];
    private ArrayList<TextArea> textAreas = new ArrayList<>();
     private ArrayList<HBox> hBoxes = new ArrayList<>();
 
@@ -72,27 +69,23 @@ public class ViewerController {
         }
 
 
-        private void addPhotoToFolder(){
-        }
-
-
-
         private void addPhotos(){
             VBox imageHolderV = new VBox();
             editorPane.getChildren().addAll((imageHolderV));
             textAreas.add(new TextArea());
 
-            for( int i=1; i < 10; i++){
+            for( int i=1; i <= 9; i++){
                 textAreas.add(new TextArea());
-                int currentFloor = (int)Math.floor(i/3);
+                int currentFloor = (int)Math.ceil(i/3);
                 if (currentFloor==i/3){
                     hBoxes.add(new HBox());
                 }
 
                 textAreas.get(i).setText("testing 1,2,5! NUMBER: "+i);
-                hBoxes.get(currentFloor).getChildren().addAll(textAreas.get(i));
-                if (i%3==0|| i==1){
-                    System.out.println(currentFloor);
+                hBoxes.get((i-1)/3).getChildren().addAll(textAreas.get(i));
+
+                if (i%3==1){
+                    System.out.println("test ");
                 imageHolderV.getChildren().add(hBoxes.get(currentFloor));
                 }
 
@@ -103,7 +96,6 @@ public class ViewerController {
 
     public void testButton(ActionEvent actionEvent) {
         addPhotos();
-        System.out.println("test1");
     }
 
     public static BufferedImage scale(BufferedImage src, int w, int h)
