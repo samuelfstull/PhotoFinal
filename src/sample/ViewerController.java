@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
@@ -14,6 +16,7 @@ import java.awt.image.RenderedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,8 +29,10 @@ import javax.imageio.ImageIO;
 public class ViewerController {
     ImageView myImageView = new ImageView();
     @FXML AnchorPane editorPane;
-    private int counter = 0;
-   private TextArea[] textAreas = new TextArea[10];
+    private int counter = 1;
+   //private TextArea[] textAreas = new TextArea[10];
+   private ArrayList<TextArea> textAreas = new ArrayList<>();
+    private ArrayList<HBox> hBoxes = new ArrayList<>();
 
     public void btnLoadEventListener(ActionEvent actionEvent) {
 
@@ -69,19 +74,28 @@ public class ViewerController {
 
         private void addPhotoToFolder(){
         }
+
+
+
         private void addPhotos(){
-    /*
-        TextArea test = new TextArea();
-        AnchorPane.setBottomAnchor(test, 10.0+counter);
-        editorPane.getChildren().add(test);*/
-            for( int i=0; i < 9; i++){
-                double counterd = (double) counter;
-                textAreas[i] =  new TextArea();     // <-- here
-                textAreas[i].setText("testing 1,2,5"+counter);
-                System.out.println(textAreas[i].getText());
-                editorPane.getChildren().addAll((textAreas[i]));
-                AnchorPane.setBottomAnchor(textAreas[i], counterd*10);
-                counter++;
+            VBox imageHolderV = new VBox();
+            editorPane.getChildren().addAll((imageHolderV));
+            textAreas.add(new TextArea());
+
+            for( int i=1; i < 10; i++){
+                textAreas.add(new TextArea());
+                int currentFloor = (int)Math.floor(i/3);
+                if (currentFloor==i/3){
+                    hBoxes.add(new HBox());
+                }
+
+                textAreas.get(i).setText("testing 1,2,5! NUMBER: "+i);
+                hBoxes.get(currentFloor).getChildren().addAll(textAreas.get(i));
+                if (i%3==0|| i==1){
+                    System.out.println(currentFloor);
+                imageHolderV.getChildren().add(hBoxes.get(currentFloor));
+                }
+
             }
 
 
