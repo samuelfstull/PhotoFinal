@@ -1,4 +1,4 @@
-package sample;
+package photoTagger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +23,7 @@ public class MainMenuController {
 
 
         ViewStage.setTitle("Add your Photos!");
-        ViewStage.setScene(new Scene(root, 450, 450));
+        ViewStage.setScene(new Scene(root, 650, 450));
         ViewStage.show();
     }
 
@@ -38,7 +38,7 @@ public class MainMenuController {
         }
 
         Editstage.setTitle("View your Photos!");
-        Editstage.setScene(new Scene(root, 450, 450));
+        Editstage.setScene(new Scene(root, 1100, 765));
         Editstage.show();
     }
 }
