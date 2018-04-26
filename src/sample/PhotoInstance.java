@@ -14,9 +14,10 @@ public class PhotoInstance {
     private Image image;
 
     public PhotoInstance(String name, ArrayList<String> tags, Image image) {
-        name = this.name;
-        tags = this.tags;
-        image = this.image;
+        this.name = name;
+        this.tags = tags;
+        this.image = image;
+        //image1 = this.image;
     }
 
     private ArrayList<String> getTags() {

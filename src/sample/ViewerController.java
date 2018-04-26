@@ -139,7 +139,7 @@ public class ViewerController {
         editorPane.getChildren().addAll((imageHolderV));
         imageViews.add(new ImageView());
 
-        for( int i=1; i <= 2; i++){
+        for( int i=1; i <= Main.allPhotos.size(); i++){
             ImageView imv = new ImageView();
             imageViews.add(imv);
             int currentFloor = (int)Math.ceil(i/3);
@@ -149,12 +149,15 @@ public class ViewerController {
 
             //Image image = new Image(file)
 
+            System.out.println(Main.allPhotos.get(i-1));
+
             Image img = Main.allPhotos.get(i-1).getImage();
             imageViews.get(i).setImage(img);
             hBoxes.get((i-1)/3).getChildren().addAll(imageViews.get(i));
 
             if (i%3==1){
                 System.out.println("test ");
+                System.out.println(img);
                 imageHolderV.getChildren().add(hBoxes.get(currentFloor));
             }
 
