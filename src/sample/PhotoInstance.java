@@ -20,7 +20,7 @@ public class PhotoInstance {
         //image1 = this.image;
     }
 
-    private ArrayList<String> getTags() {
+    public ArrayList<String> getTags() {
         return tags;
     }
 

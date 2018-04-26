@@ -3,45 +3,32 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-
-import javafx.scene.*;
-
-import javafx.scene.layout.Region;
-import javafx.scene.Group;
-import javafx.scene.layout.GridPane;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-
 import javax.imageio.ImageIO;
 
 
 public class ViewerController {
+    public javafx.scene.control.TextField searchField;
     @FXML AnchorPane editorPane;
-    private ArrayList<TextArea> textAreas = new ArrayList<>();
+   private ArrayList<TextArea> textAreas = new ArrayList<>();
     private ArrayList<HBox> hBoxes = new ArrayList<>();
     private ArrayList<ImageView> imageViews = new ArrayList<>();
+
 
     public void btnLoadEventListener(ActionEvent actionEvent) {
 
@@ -134,12 +121,13 @@ public class ViewerController {
 
         }
 */
-    private void addPhotos() {
+    private void addPhotos(ArrayList<PhotoInstance> photoList ) {
+        editorPane.getChildren().clear();
         VBox imageHolderV = new VBox();
         editorPane.getChildren().addAll((imageHolderV));
         imageViews.add(new ImageView());
 
-        for( int i=1; i <= Main.allPhotos.size(); i++){
+        for( int i=1; i <= photoList.size(); i++){
             ImageView imv = new ImageView();
             imageViews.add(imv);
             int currentFloor = (int)Math.ceil(i/3);
@@ -147,14 +135,11 @@ public class ViewerController {
                 hBoxes.add(new HBox());
             }
 
-            //Image image = new Image(file)
-
-            System.out.println(Main.allPhotos.get(i-1));
-
-            Image img = Main.allPhotos.get(i-1).getImage();
+            System.out.println(photoList.get(i-1));
+            Image img = photoList.get(i-1).getImage();
             imageViews.get(i).setImage(img);
             HBox hb = hBoxes.get((i-1)/3);
-            hb.setPadding(new Insets(15, 12, 15, 12));
+            hb.setPadding(new Insets(15,12,15,12));
             hb.setSpacing(10);
             hb.getChildren().addAll(imageViews.get(i));
 
@@ -169,8 +154,7 @@ public class ViewerController {
     }
 
     public void testButton(ActionEvent actionEvent) {
-        addPhotos();
-        //Scene scene = new Scene(root, 600, 330, Color.WHITE);
+        addPhotos(Main.allPhotos);
     }
 
     public static BufferedImage scale(BufferedImage src, int w, int h)
@@ -191,6 +175,22 @@ public class ViewerController {
             }
         }
         return img;
+    }
+    public ArrayList<PhotoInstance> Searchedphotos(String searchTerm){
+        ArrayList<PhotoInstance> listofPhotos = new ArrayList<>();
+        for (PhotoInstance i:Main.allPhotos){
+            for(String j: i.getTags()){
+                if (j.equals(searchTerm)){
+                    listofPhotos.add(i);
+                }
+            }
+        }
+        return listofPhotos;
+    }
+
+    public void searchFunction(ActionEvent actionEvent) {
+        addPhotos(Searchedphotos(searchField.getText()));
+
     }
 
 
