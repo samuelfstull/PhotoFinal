@@ -15,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
@@ -59,46 +61,43 @@ public class QuestionsController {
 
         FileChooser fileChooser = new FileChooser();
 
-
-        //Set extension filter
-        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
-        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
-        fileChooser.getExtensionFilters().addAll(extFilterPNG, extFilterJPG);
-
-        //Show open file dialog
-        File file = fileChooser.showOpenDialog(null);
-        String name = file.getName(); //gets the name of the image file, e.g. jacksonWashington1.png
-        String location = file.getAbsolutePath();
-        System.out.println("absolute path for this pic is: " + location);
-        System.out.println(name);
-
-        try {
-            BufferedImage bufferedImage = ImageIO.read(file);
-
-            System.out.println(bufferedImage.getHeight());
-            System.out.println(bufferedImage.getWidth());
-
-            BufferedImage bImage = scale(bufferedImage, 300, 225);
-
-            RenderedImage rImage = (RenderedImage) bImage;
-            javafx.scene.image.Image image = SwingFXUtils.toFXImage(bImage, null);
-
-            tags.clear();
-            tags.add(whenText.getText());
-            tags.add(whereText.getText());
-            tags.add(otherText.getText());
-            makePhotoInstance(name, tags, image);
-
+        //start recently added
+        JFileChooser chooser = new JFileChooser();
+        chooser.setMultiSelectionEnabled(true);
+        FileNameExtensionFilter extFilterPNG = new FileNameExtensionFilter("PNG files (*.png)", "*.PNG");
+        chooser.setFileFilter(extFilterPNG);
+        FileNameExtensionFilter extFilterJPG = new FileNameExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        chooser.setFileFilter(extFilterJPG);
+        chooser.showOpenDialog(null);
+        File[] files = chooser.getSelectedFiles();
+        for(int i=0; i<files.length; i++) {
+            String name = files[i].getName();
+            String location = files[i].getAbsolutePath();
             try {
-                System.out.println("got here");
-                File outputfile = new File("C:\\Users\\Adam\\Pictures\\" + name);
+                BufferedImage bufferedImage = ImageIO.read(files[i]);
 
-                ImageIO.write(rImage, "png", outputfile);
-            } catch(IOException e) {
-                System.out.println("Write error!");
+                System.out.println(bufferedImage.getHeight());
+                System.out.println(bufferedImage.getWidth());
+
+                BufferedImage bImage = scale(bufferedImage, 300, 225);
+                //BufferedImage bImage = scale(bufferedImage, 100, 75);
+
+                RenderedImage rImage = (RenderedImage) bImage;
+                Image image = SwingFXUtils.toFXImage(bImage, null);
+
+                //makePhotoInstance(name, QuestionsController.tags, image);
+
+                try {
+                    System.out.println("got here");
+                    File outputfile = new File("C:\\Users\\Adam\\Pictures\\" + name);
+
+                    ImageIO.write(rImage, "png", outputfile);
+                } catch(IOException e) {
+                    System.out.println("Write error!");
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
