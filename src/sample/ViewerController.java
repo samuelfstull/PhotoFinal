@@ -42,6 +42,7 @@ public class ViewerController {
     private ArrayList<TextArea> textAreas = new ArrayList<>();
     private ArrayList<HBox> hBoxes = new ArrayList<>();
     private ArrayList<ImageView> imageViews = new ArrayList<>();
+    private ArrayList<Label> tagLabels = new ArrayList<>();
 
     public void btnLoadEventListener(ActionEvent actionEvent) {
 
@@ -140,6 +141,8 @@ public class ViewerController {
         imageViews.add(new ImageView());
 
         for( int i=1; i <= Main.allPhotos.size(); i++){
+            Label lab = new Label();
+            tagLabels.add(lab);
             ImageView imv = new ImageView();
             imageViews.add(imv);
             int currentFloor = (int)Math.ceil(i/3);
@@ -192,6 +195,5 @@ public class ViewerController {
         }
         return img;
     }
-
 
 }
