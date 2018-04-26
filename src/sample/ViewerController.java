@@ -33,9 +33,9 @@ public class ViewerController {
 
         imageViews.clear();
         hBoxes.clear();
-        editorPane.getChildren().removeAll();
+        editorPane.getChildren().clear();
         VBox imageHolderV = new VBox();
-        editorPane.getChildren().addAll((imageHolderV));
+        editorPane.getChildren().setAll((imageHolderV));
         imageViews.add(new ImageView());
 
         for( int i=1; i <= photoList.size(); i++){
