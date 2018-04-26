@@ -7,7 +7,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
+import javafx.scene.paint.Color;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -20,6 +22,7 @@ import java.util.logging.Logger;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
 
 public class ViewerController {
@@ -58,8 +61,10 @@ public class ViewerController {
             hb.setPadding(new Insets(15,12,15,12));
             hb.setSpacing(10);
             label.setText(photoList.get(i-1).getTags());
+            label.setTextFill(Color.web("#ffffff"));
+            label.setFont(new Font("Cambria", 20));
             holder.getChildren().addAll(imageViews.get(i),label);
-            hb.getChildren().addAll();
+            hb.getChildren().addAll(holder);
 
             if (i%3==1){
                 System.out.println("test ");
@@ -110,6 +115,7 @@ public class ViewerController {
         addPhotos(Searchedphotos(searchField.getText()));
 
     }
-
-
+    public static void infoBox(String infoMessage, String titleBar) {
+        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
 }
