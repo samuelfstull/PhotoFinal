@@ -28,7 +28,7 @@ public class ViewerController {
    private ArrayList<TextArea> textAreas = new ArrayList<>();
     private ArrayList<HBox> hBoxes = new ArrayList<>();
     private ArrayList<ImageView> imageViews = new ArrayList<>();
-
+    private ArrayList<Label> tagLabels = new ArrayList<>();
 
     public void btnLoadEventListener(ActionEvent actionEvent) {
 
