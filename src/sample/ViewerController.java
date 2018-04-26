@@ -122,7 +122,7 @@ public class ViewerController {
         }
 */
     private void addPhotos(ArrayList<PhotoInstance> photoList ) {
-        editorPane.getChildren().clear();
+        editorPane.getChildren().removeAll();
         VBox imageHolderV = new VBox();
         editorPane.getChildren().addAll((imageHolderV));
         imageViews.add(new ImageView());

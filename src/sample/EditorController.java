@@ -59,7 +59,7 @@ public class EditorController {
                 RenderedImage rImage = (RenderedImage) bImage;
                 Image image = SwingFXUtils.toFXImage(bImage, null);
 
-                makePhotoInstance(name, QuestionsController.tags, image);
+                //makePhotoInstance(name, QuestionsController.tags, image);
 
                 try {
                     System.out.println("got here");
