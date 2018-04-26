@@ -20,7 +20,14 @@ public class PhotoInstance {
         //image1 = this.image;
     }
 
-    public ArrayList<String> getTags() {
+    public String getTags() {
+        String intro = "tags: ";
+        for (String i : tags){
+            intro +=i;
+        }
+        return intro;
+    }
+    public ArrayList<String>getTagList(){
         return tags;
     }
 

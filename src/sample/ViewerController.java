@@ -40,14 +40,9 @@ public class ViewerController {
         imageViews.add(new ImageView());
 
         for( int i=1; i <= photoList.size(); i++){
-            Label lab = new Label();
-            String string = "Tags: ";
-            for(int j=0; j<photoList.get(i-1).getTags().size(); j++) {
-                String str = photoList.get(i-1).getTags().get(j).toString();
-                string += str;
-            }
-            lab.setText(string);
-            tagLabels.add(lab);                          //all tag labels added in here
+            javafx.scene.control.Label label = new javafx.scene.control.Label();
+            VBox holder = new VBox();
+            //tagLabels.add(lab);                          //all tag labels added in here
             ImageView imv = new ImageView();
             imageViews.add(imv);
             int currentFloor = (int)Math.ceil(i/3);
@@ -55,13 +50,16 @@ public class ViewerController {
                 hBoxes.add(new HBox());
             }
 
-            System.out.println(photoList.get(i-1));
+            //System.out.println(photoList.get(i-1));
             Image img = photoList.get(i-1).getImage();
             imageViews.get(i).setImage(img);
+
             HBox hb = hBoxes.get((i-1)/3);
             hb.setPadding(new Insets(15,12,15,12));
             hb.setSpacing(10);
-            hb.getChildren().addAll(imageViews.get(i));
+            label.setText(photoList.get(i-1).getTags());
+            holder.getChildren().addAll(imageViews.get(i),label);
+            hb.getChildren().addAll();
 
             if (i%3==1){
                 System.out.println("test ");
@@ -99,7 +97,7 @@ public class ViewerController {
     public ArrayList<PhotoInstance> Searchedphotos(String searchTerm){
         ArrayList<PhotoInstance> listofPhotos = new ArrayList<>();
         for (PhotoInstance i:Main.allPhotos){
-            for(String j: i.getTags()){
+            for(String j: i.getTagList()){
                 if (j.equals(searchTerm)){
                     listofPhotos.add(i);
                 }
