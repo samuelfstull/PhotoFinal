@@ -52,8 +52,8 @@ public class EditorController {
             System.out.println(bufferedImage.getHeight());
             System.out.println(bufferedImage.getWidth());
 
-            //BufferedImage bImage = scale(bufferedImage, 300, 225);
-            BufferedImage bImage = scale(bufferedImage, 100, 75);
+            BufferedImage bImage = scale(bufferedImage, 300, 225);
+            //BufferedImage bImage = scale(bufferedImage, 100, 75);
 
             RenderedImage rImage = (RenderedImage) bImage;
             Image image = SwingFXUtils.toFXImage(bImage, null);

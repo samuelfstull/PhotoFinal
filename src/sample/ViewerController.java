@@ -39,7 +39,7 @@ import javax.imageio.ImageIO;
 
 public class ViewerController {
     @FXML AnchorPane editorPane;
-   private ArrayList<TextArea> textAreas = new ArrayList<>();
+    private ArrayList<TextArea> textAreas = new ArrayList<>();
     private ArrayList<HBox> hBoxes = new ArrayList<>();
     private ArrayList<ImageView> imageViews = new ArrayList<>();
 
@@ -153,7 +153,10 @@ public class ViewerController {
 
             Image img = Main.allPhotos.get(i-1).getImage();
             imageViews.get(i).setImage(img);
-            hBoxes.get((i-1)/3).getChildren().addAll(imageViews.get(i));
+            HBox hb = hBoxes.get((i-1)/3);
+            hb.setPadding(new Insets(15, 12, 15, 12));
+            hb.setSpacing(10);
+            hb.getChildren().addAll(imageViews.get(i));
 
             if (i%3==1){
                 System.out.println("test ");
@@ -189,4 +192,6 @@ public class ViewerController {
         }
         return img;
     }
+
+
 }
