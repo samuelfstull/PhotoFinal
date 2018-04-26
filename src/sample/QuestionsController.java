@@ -59,8 +59,6 @@ public class QuestionsController {
     }
     public void choosePhoto() {
 
-        FileChooser fileChooser = new FileChooser();
-
         //start recently added
         JFileChooser chooser = new JFileChooser();
         chooser.setMultiSelectionEnabled(true);
@@ -70,6 +68,11 @@ public class QuestionsController {
         chooser.setFileFilter(extFilterJPG);
         chooser.showOpenDialog(null);
         File[] files = chooser.getSelectedFiles();
+
+        tags.clear();
+        tags.add(whenText.getText());
+        tags.add(otherText.getText());
+        tags.add(whereText.getText());
         for(int i=0; i<files.length; i++) {
             String name = files[i].getName();
             String location = files[i].getAbsolutePath();
@@ -85,7 +88,7 @@ public class QuestionsController {
                 RenderedImage rImage = (RenderedImage) bImage;
                 Image image = SwingFXUtils.toFXImage(bImage, null);
 
-                //makePhotoInstance(name, QuestionsController.tags, image);
+                makePhotoInstance(name, tags, image);
 
                 try {
                     System.out.println("got here");
