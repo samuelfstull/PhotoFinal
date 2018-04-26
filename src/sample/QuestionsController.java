@@ -31,6 +31,7 @@ public class QuestionsController {
     @FXML private TextField whereText;
     @FXML private TextField whenText;
     @FXML private TextField otherText;
+    @FXML private javafx.scene.control.Button closeWindow;
 
     ArrayList<String> tags = new ArrayList<>();
 
@@ -58,6 +59,9 @@ public class QuestionsController {
         System.out.println(tags);
     }
     public void choosePhoto() {
+        Stage stage = (Stage) closeWindow.getScene().getWindow();
+        // do what you have to do
+        stage.close();
 
         //start recently added
         JFileChooser chooser = new JFileChooser();
@@ -103,6 +107,8 @@ public class QuestionsController {
             }
         }
 
+        QuestionsController.infoBox(files.length + " photos added.", "SUCCESS!");
+
 
 
     }
@@ -138,5 +144,9 @@ public class QuestionsController {
         }
 
         System.out.println(Main.allPhotos.size());
+    }
+
+    public static void infoBox(String infoMessage, String titleBar) {
+        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
 }

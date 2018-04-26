@@ -27,6 +27,7 @@ public class ViewerController {
     @FXML AnchorPane editorPane;
     private ArrayList<HBox> hBoxes = new ArrayList<>();
     private ArrayList<ImageView> imageViews = new ArrayList<>();
+    private ArrayList<Label> tagLabels = new ArrayList<>();
 
 
     private void addPhotos(ArrayList<PhotoInstance> photoList ) {
@@ -39,6 +40,14 @@ public class ViewerController {
         imageViews.add(new ImageView());
 
         for( int i=1; i <= photoList.size(); i++){
+            Label lab = new Label();
+            String string = "Tags: ";
+            for(int j=0; j<photoList.get(i-1).getTags().size(); j++) {
+                String str = photoList.get(i-1).getTags().get(j).toString();
+                string += str;
+            }
+            lab.setText(string);
+            tagLabels.add(lab);                          //all tag labels added in here
             ImageView imv = new ImageView();
             imageViews.add(imv);
             int currentFloor = (int)Math.ceil(i/3);

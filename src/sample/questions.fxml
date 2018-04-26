@@ -14,6 +14,6 @@
       <Label layoutX="223.0" layoutY="111.0" text="When did you take these photos?" />
       <TextField fx:id="otherText" layoutX="240.0" layoutY="197.0" onAction="#getOtherText" />
       <Label layoutX="198.0" layoutY="173.0" text="Any other information about these photos?" />
-      <Button layoutX="273.0" layoutY="304.0" mnemonicParsing="false" onAction="#choosePhoto" text="Load photos" />
+      <Button fx:id="closeWindow" layoutX="273.0" layoutY="304.0" mnemonicParsing="false" onAction="#choosePhoto" text="Load photos" />
    </children>
 </AnchorPane>
