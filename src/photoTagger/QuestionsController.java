@@ -32,10 +32,6 @@ public class QuestionsController {
 
         JFileChooser chooser = new JFileChooser();
         chooser.setMultiSelectionEnabled(true);
-        FileNameExtensionFilter extFilterPNG = new FileNameExtensionFilter("PNG files (*.png)", "*.PNG");
-        chooser.setFileFilter(extFilterPNG);
-        FileNameExtensionFilter extFilterJPG = new FileNameExtensionFilter("JPG files (*.jpg)", "*.JPG");
-        chooser.setFileFilter(extFilterJPG);
         chooser.showOpenDialog(null);
         File[] files = chooser.getSelectedFiles();
 
@@ -61,9 +57,6 @@ public class QuestionsController {
         }
 
         QuestionsController.infoBox(files.length + " photos added.", "SUCCESS!");
-
-
-
     }
 
 
@@ -90,7 +83,7 @@ public class QuestionsController {
     private void makePhotoInstance(String name, ArrayList<String> tags, Image image) {
         PhotoInstance newPI = new PhotoInstance(name, tags, image);
         Main.allPhotos.add(newPI);
-        }
+    }
 
     private static void infoBox(String infoMessage, String titleBar) {
         JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);

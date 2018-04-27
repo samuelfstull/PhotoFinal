@@ -1,7 +1,6 @@
 package photoTagger;
 
 import javafx.scene.image.Image;
-
 import java.util.ArrayList;
 
 class PhotoInstance {

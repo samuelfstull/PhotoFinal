@@ -19,9 +19,7 @@ public class Main extends Application {
 
     static ArrayList<PhotoInstance> allPhotos = new ArrayList<>();
 
-
     public static void main(String[] args) {
         launch(args);
     }
-
 }
