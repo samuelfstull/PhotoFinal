@@ -5,15 +5,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1200.0" style="-fx-background-color: #00cc99;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="photoTagger.QuestionsController">
-   <children>
-      <Label layoutX="286.0" layoutY="22.0" text="Welcome!" />
-      <TextField fx:id="whereText" layoutX="238.0" layoutY="79.0" onAction="#getWhereText" />
-      <TextField fx:id="whenText" layoutX="239.0" layoutY="134.0" onAction="#getWhenText" />
-      <Label layoutX="226.0" layoutY="47.0" text="Where did you take these photos?" />
-      <Label layoutX="223.0" layoutY="111.0" text="When did you take these photos?" />
-      <TextField fx:id="otherText" layoutX="240.0" layoutY="197.0" onAction="#getOtherText" />
-      <Label layoutX="198.0" layoutY="173.0" text="Any other information about these photos?" />
-      <Button fx:id="closeWindow" layoutX="273.0" layoutY="304.0" mnemonicParsing="false" onAction="#choosePhoto" text="Load photos" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="1200.0" style="-fx-background-color: #00cc99;" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="photoTagger.QuestionsController">
+   <Label layoutX="286.0" layoutY="22.0" text="Welcome!"/>
+   <TextField fx:id="whereText" layoutX="238.0" layoutY="79.0" />
+   <TextField fx:id="whenText" layoutX="239.0" layoutY="134.0" />
+   <Label layoutX="226.0" layoutY="47.0" text="Where did you take these photos?"/>
+   <Label layoutX="223.0" layoutY="111.0" text="When did you take these photos?"/>
+   <TextField fx:id="otherText" layoutX="240.0" layoutY="197.0" />
+   <Label layoutX="198.0" layoutY="173.0" text="Any other information about these photos?"/>
+   <Button fx:id="closeWindow" layoutX="273.0" layoutY="304.0" mnemonicParsing="false" onAction="#choosePhoto"
+           text="Load photos"/>
 </AnchorPane>

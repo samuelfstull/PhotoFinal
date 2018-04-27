@@ -1,6 +1,5 @@
 package photoTagger;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.layout.AnchorPane;
@@ -8,12 +7,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.paint.Color;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javax.swing.*;
 
 
 public class ViewerController {
@@ -21,7 +17,6 @@ public class ViewerController {
     @FXML AnchorPane editorPane;
     private ArrayList<HBox> hBoxes = new ArrayList<>();
     private ArrayList<ImageView> imageViews = new ArrayList<>();
-    private ArrayList<Label> tagLabels = new ArrayList<>();
 
 
     private void addPhotos(ArrayList<PhotoInstance> photoList ) {
@@ -44,7 +39,6 @@ public class ViewerController {
                 hBoxes.add(new HBox());
             }
 
-            //System.out.println(photoList.get(i-1));
             Image img = photoList.get(i-1).getImage();
             imageViews.get(i).setImage(img);
 
@@ -58,8 +52,6 @@ public class ViewerController {
             hb.getChildren().addAll(holder);
 
             if (i%3==1){
-                System.out.println("test ");
-                System.out.println(img);
                 imageHolderV.getChildren().add(hBoxes.get(currentFloor));
             }
 
@@ -67,30 +59,10 @@ public class ViewerController {
 
     }
 
-    public void testButton(ActionEvent actionEvent) {
+    public void testButton() {
         addPhotos(Main.allPhotos);
     }
-
-    public static BufferedImage scale(BufferedImage src, int w, int h)
-    {
-        BufferedImage img =
-                new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
-        int x, y;
-        int ww = src.getWidth();
-        int hh = src.getHeight();
-        int[] ys = new int[h];
-        for (y = 0; y < h; y++)
-            ys[y] = y * hh / h;
-        for (x = 0; x < w; x++) {
-            int newX = x * ww / w;
-            for (y = 0; y < h; y++) {
-                int col = src.getRGB(newX, ys[y]);
-                img.setRGB(x, y, col);
-            }
-        }
-        return img;
-    }
-    public ArrayList<PhotoInstance> Searchedphotos(String searchTerm){
+    private ArrayList<PhotoInstance> Searchedphotos(String searchTerm){
         ArrayList<PhotoInstance> listofPhotos = new ArrayList<>();
         for (PhotoInstance i:Main.allPhotos){
             for(String j: i.getTagList()){
@@ -102,11 +74,8 @@ public class ViewerController {
         return listofPhotos;
     }
 
-    public void searchFunction(ActionEvent actionEvent) {
+    public void searchFunction() {
         addPhotos(Searchedphotos(searchField.getText()));
 
-    }
-    public static void infoBox(String infoMessage, String titleBar) {
-        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
 }

@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="outerScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="photoTagger.ViewerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="photoTagger.ViewerController">
    <Button layoutX="487.0" layoutY="24.0" mnemonicParsing="false" onAction="#testButton" text="Show all Photos" />
    <AnchorPane fx:id="editorPane" layoutY="63.0" prefHeight="337.0" prefWidth="600.0" />
    <TextField fx:id="searchField" layoutX="39.0" layoutY="24.0" />

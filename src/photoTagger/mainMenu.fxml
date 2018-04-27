@@ -41,7 +41,7 @@
             </Button>
             <Button alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#PhotoAdderPress" style="-fx-background-color: Black;" text="Photo Viewer">
                <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
+                  <LinearGradient >
                      <stops>
                         <Stop color="#f50707" />
                         <Stop color="#4a3434" offset="1.0" />
