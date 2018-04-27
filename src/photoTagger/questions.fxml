@@ -4,17 +4,31 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="1200.0" style="-fx-background-color: #00cc99;" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="photoTagger.QuestionsController">
-   <Label layoutX="286.0" layoutY="22.0" text="Welcome!"/>
-   <TextField fx:id="whereText" layoutX="238.0" layoutY="79.0" />
-   <TextField fx:id="whenText" layoutX="239.0" layoutY="134.0" />
-   <Label layoutX="226.0" layoutY="47.0" text="Where did you take these photos?"/>
-   <Label layoutX="223.0" layoutY="111.0" text="When did you take these photos?"/>
-   <TextField fx:id="otherText" layoutX="240.0" layoutY="197.0" />
-   <Label layoutX="198.0" layoutY="173.0" text="Any other information about these photos?"/>
-   <Button fx:id="closeWindow" layoutX="273.0" layoutY="304.0" mnemonicParsing="false" onAction="#choosePhoto"
-           text="Load photos"/>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="610.0" style="-fx-background-color: #00cc99;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="photoTagger.QuestionsController">
+   <Label layoutX="286.0" layoutY="14.0" text="Welcome!">
+      <font>
+         <Font name="Bookman Old Style" size="12.0" />
+      </font></Label>
+   <TextField fx:id="whereText" layoutX="241.0" layoutY="153.0" />
+   <TextField fx:id="whenText" layoutX="240.0" layoutY="210.0" />
+   <Label layoutX="215.0" layoutY="122.0" text="Where did you take these photos?">
+      <font>
+         <Font name="Bookman Old Style" size="12.0" />
+      </font></Label>
+   <Label layoutX="217.0" layoutY="184.0" text="When did you take these photos?">
+      <font>
+         <Font name="Bookman Old Style" size="12.0" />
+      </font></Label>
+   <TextField fx:id="otherText" layoutX="240.0" layoutY="267.0" />
+   <Label layoutX="200.0" layoutY="243.0" text="Any other information about these photos?" />
+   <Button fx:id="closeWindow" layoutX="272.0" layoutY="351.0" mnemonicParsing="false" onAction="#choosePhoto" style="-fx-background-color: #53290B;" text="Load photos" textFill="WHITE">
+      <font>
+         <Font name="Brush Script MT Italic" size="16.0" />
+      </font></Button>
+   <Label layoutX="134.0" layoutY="30.0" prefHeight="71.0" prefWidth="370.0" text="Please answer the following questions. These will be used as the tags for any photos you load. (Hint: you can load multiple photos with Shift + the directional arrows)" textAlignment="CENTER" wrapText="true">
+      <font>
+         <Font name="Bookman Old Style Italic" size="12.0" />
+      </font></Label>
 </AnchorPane>

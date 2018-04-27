@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="600.0" style="-fx-background-color: teal;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="photoTagger.MainMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="600.0" style="-fx-background-color: #00cc99;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="photoTagger.MainMenuController">
    <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="600.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Label text="Tu-Tu Tango Photo Tagger">
          <font>
@@ -26,28 +26,12 @@
       </Label>
       <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="148.0" prefWidth="600.0">
          <HBox alignment="CENTER" prefHeight="107.0" prefWidth="600.0" spacing="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#photoViewerPress" style="-fx-background-color: Black;" text="Photo Adder">
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#photoViewerPress" style="-fx-background-color: #53290B;" text="Add Photos" textFill="#f8f8f8">
                <font>
                   <Font name="Brush Script MT Italic" size="20.0" />
                </font>
-               <textFill>
-                  <LinearGradient>
-                     <stops>
-                        <Stop color="#f50707" />
-                        <Stop color="#4a3434" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
             </Button>
-            <Button alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#PhotoAdderPress" style="-fx-background-color: Black;" text="Photo Viewer">
-               <textFill>
-                  <LinearGradient >
-                     <stops>
-                        <Stop color="#f50707" />
-                        <Stop color="#4a3434" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
+            <Button alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#PhotoAdderPress" style="-fx-background-color: #53290B;" text="View Photos" textFill="#f7f7f7">
                <font>
                   <Font name="Brush Script MT Italic" size="20.0" />
                </font>

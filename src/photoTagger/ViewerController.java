@@ -19,7 +19,7 @@ public class ViewerController {
     private ArrayList<ImageView> imageViews = new ArrayList<>();
 
 
-    private void addPhotos(ArrayList<PhotoInstance> photoList ) {
+    private void ViewPhotos(ArrayList<PhotoInstance> photoList ) {
 
         imageViews.clear();
         hBoxes.clear();
@@ -31,7 +31,6 @@ public class ViewerController {
         for( int i=1; i <= photoList.size(); i++){
             javafx.scene.control.Label label = new javafx.scene.control.Label();
             VBox holder = new VBox();
-            //tagLabels.add(lab);                          //all tag labels added in here
             ImageView imv = new ImageView();
             imageViews.add(imv);
             int currentFloor = (int)Math.ceil(i/3);
@@ -60,7 +59,7 @@ public class ViewerController {
     }
 
     public void testButton() {
-        addPhotos(Main.allPhotos);
+        ViewPhotos(Main.allPhotos);
     }
     private ArrayList<PhotoInstance> Searchedphotos(String searchTerm){
         ArrayList<PhotoInstance> listofPhotos = new ArrayList<>();
@@ -75,7 +74,7 @@ public class ViewerController {
     }
 
     public void searchFunction() {
-        addPhotos(Searchedphotos(searchField.getText()));
+        ViewPhotos(Searchedphotos(searchField.getText()));
 
     }
 }
